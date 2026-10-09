@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Danh Sách Sinh Viên</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<section layout:fragment="content" class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Danh Sách Sinh Viên</h3>
+            <a th:href="@{/sinhvien/add}" class="btn btn-success">+ Thêm Sinh Viên Mới</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Mã SV</th>
+                        <th>Họ và Tên</th>
+                        <th>Email</th>
+                        <th>Số Điện Thoại</th>
+                        <th>Địa Chỉ</th>
+                        <th style="width: 160px;">Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="sv : ${sinhviens}">
+                        <td th:text="${sv.id}">1</td>
+                        <td th:text="${sv.maSv}">SV001</td>
+                        <td th:text="${sv.hoTen}">Nguyễn Văn A</td>
+                        <td th:text="${sv.email}">a@example.com</td>
+                        <td th:text="${sv.soDienThoai}">0901234567</td>
+                        <td th:text="${sv.diaChi}">Hà Nội</td>
+                        <td>
+                            <a th:href="@{/sinhvien/edit/{id}(id=${sv.id})}" class="btn btn-sm btn-success">Sửa</a>
+                            <a th:href="@{/sinhvien/delete/{id}(id=${sv.id})}" class="btn btn-sm btn-danger"
+                               onclick="return confirm('Bạn có chắc chắn muốn xóa sinh viên này?')">Xóa</a>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(sinhviens)}">
+                        <td colspan="7" class="text-center text-muted py-4">Chưa có sinh viên nào trong danh sách.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title layout:title-pattern="$LAYOUT_TITLE - Hệ Thống Quản Lý">Hệ Thống Quản Lý</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .teacher-navbar {
+            background-color: #f5a623;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .btn-sinhvien {
+            background-color: #d63031;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 6px;
+            padding: 6px 16px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            border: none;
+        }
+        .btn-sinhvien:hover {
+            background-color: #b71540;
+            color: #ffffff;
+        }
+        .btn-nav-link {
+            color: #2d3436;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+        .btn-nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header chuẩn theo tài liệu của thầy cô -->
+    <header class="teacher-navbar shadow-sm">
+        <div class="d-flex align-items-center gap-3">
+            <a th:href="@{/sinhvien}" class="btn-sinhvien">
+                🎓 Quản Lý Sinh Viên
+            </a>
+            <a th:href="@{/categories}" class="btn-nav-link">
+                📁 Danh Mục
+            </a>
+            <a th:href="@{/products}" class="btn-nav-link">
+                📦 Sản Phẩm
+            </a>
+        </div>
+        <div>
+            <a th:href="@{/sinhvien/add}" class="btn-sinhvien">
+                + Nhập Sinh Viên
+            </a>
+        </div>
+    </header>
+
+    <div class="container my-4">
+        <section layout:fragment="content">
+            <!-- Nội dung các trang con sẽ được chèn vào đây -->
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
